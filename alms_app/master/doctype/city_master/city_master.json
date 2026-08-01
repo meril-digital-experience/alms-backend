@@ -42,7 +42,7 @@
    "fieldname": "country",
    "fieldtype": "Link",
    "label": "Country",
-   "options": "Country Master"
+   "options": "Country"
   },
   {
    "fieldname": "column_break_gvfh",

@@ -487,7 +487,7 @@ def get_location_by_pincode(pincode=None):
 
 
         country = frappe.db.get_value(
-            "Country Master",
+            "Country",
             pincode_doc.country,
             ["name", "country_name"],
             as_dict=True
@@ -633,7 +633,7 @@ def get_vendor_type_master_list():
 @frappe.whitelist(allow_guest=False, methods=["GET"])
 def get_country_master_list(page_no=1, page_size=20, search_term=None):
     """
-    Get Country Master list
+    Get Country list
     """
     try:
         page_no = int(page_no)
@@ -648,10 +648,10 @@ def get_country_master_list(page_no=1, page_size=20, search_term=None):
         if search_term:
             filters["name"] = ["like", f"%{search_term}%"]
 
-        total_records = frappe.db.count("Country Master", filters=filters)
+        total_records = frappe.db.count("Country", filters=filters)
 
         country_list = frappe.get_all(
-            "Country Master",
+            "Country",
             filters=filters,
             fields=["name", "country_code"],
             limit_start=limit_start,
@@ -670,7 +670,7 @@ def get_country_master_list(page_no=1, page_size=20, search_term=None):
 
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "Error in get_country_master_list")
-        return api_error("Failed to fetch Country Master data.", 500, str(e))
+        return api_error("Failed to fetch Country data.", 500, str(e))
 
 
 
