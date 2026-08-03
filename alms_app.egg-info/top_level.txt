@@ -1,4 +1,0 @@
-alms
-alms_app
-crms
-master
