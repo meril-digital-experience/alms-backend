@@ -48,14 +48,14 @@ def patched_get_attr(method_string):
         app_name = method_string.split(".", 1)[0]
         if app_name in ("approval_app", "remittance_app"):
             return lambda *args, **kwargs: None
-        if method_string.startswith("lease_app.master."):
-            method_string = method_string.replace("lease_app.master.", "alms_app.master.", 1)
-        elif method_string.startswith("lease_app.crms."):
-            method_string = method_string.replace("lease_app.crms.", "alms_app.crms.", 1)
-        elif method_string.startswith("lease_app.api."):
-            method_string = method_string.replace("lease_app.api.", "alms_app.api.", 1)
-        elif method_string.startswith("lease_app.approval."):
-            method_string = method_string.replace("lease_app.approval.", "alms_app.approval.", 1)
+        if method_string.startswith("leasemanagement.master."):
+            method_string = method_string.replace("leasemanagement.master.", "alms_app.master.", 1)
+        elif method_string.startswith("leasemanagement.crms."):
+            method_string = method_string.replace("leasemanagement.crms.", "alms_app.crms.", 1)
+        elif method_string.startswith("leasemanagement.api."):
+            method_string = method_string.replace("leasemanagement.api.", "alms_app.api.", 1)
+        elif method_string.startswith("leasemanagement.approval."):
+            method_string = method_string.replace("leasemanagement.approval.", "alms_app.approval.", 1)
     except Exception:
         pass
     return _original_get_attr(method_string)

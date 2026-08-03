@@ -2,7 +2,7 @@ import frappe
 import traceback
 from frappe.utils.data import cast, compare, cstr, sql_like
 try:
-	from lease_app.api.utils.email_context import get_email_context
+	from leasemanagement.api.utils.email_context import get_email_context
 except ImportError:
 	try:
 		from alms_app.api.utils.email_context import get_email_context
@@ -629,7 +629,7 @@ def _handle_reject_action(doctype, doc_name, entry, pending_row, ledger_table, r
             email_send_to = reject_email_map.get((doctype, current_stage.role))
             if email_send_to:
                 try:
-                    from lease_app.api.emailsService import email_sender
+                    from leasemanagement.api.emailsService import email_sender
                 except ImportError:
                     try:
                         from alms_app.api.emailsService import email_sender
@@ -945,7 +945,7 @@ def _finalize_approval(doctype, doc_name, entry, pending_row=None, ledger_table=
             
             if email_send_to:
                 try:
-                    from lease_app.api.emailsService import email_sender
+                    from leasemanagement.api.emailsService import email_sender
                 except ImportError:
                     try:
                         from alms_app.api.emailsService import email_sender
