@@ -824,17 +824,25 @@ def get_prev_wdv_modification(
 		lreport = "Lease Report Monthly (With Escalation)"
 	previous_date = add_days(agreement_start_date, -1)
 	result = run(lreport, filters={"docname": previous_lease, "sum_modified": agreement_start_date})
-	rows = result.get("result")
-	df = pd.DataFrame(rows)
-	last_row = df.loc[df["month_end_date"] == previous_date]
-	if not last_row.empty:
-		prev_wdv = (
-			float(last_row["wdv"].iloc[0])
-			- float(last_row["closing_liability"].iloc[0])
-			+ float(prev_closing_liability)
-		)
+	rows = result.get("result", [])
+	
+	if rows:
+		prev_date_val = getdate(previous_date)
+		last_row = None
+		for row in rows:
+			if row.get("month_end_date") and getdate(row["month_end_date"]) == prev_date_val:
+				last_row = row
+				break
+				
+		if last_row is not None:
+			prev_wdv = (
+				float(last_row.get("wdv", 0))
+				- float(last_row.get("closing_liability", 0))
+				+ float(prev_closing_liability)
+			)
+			return round(prev_wdv, 3)
 
-	return round(prev_wdv, 3)
+	return prev_wdv
 
 
 def get_period_details(current_date, start_date, end_date, diff_annually, mid_diff_annually, modified_start):
