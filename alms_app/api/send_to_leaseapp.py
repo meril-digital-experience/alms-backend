@@ -8,7 +8,7 @@ from frappe.utils.file_manager import get_file_path
 def send_to_leaseapp(doc):
     print(f"Preparing to send data to Lease App for Invoice Batch: {doc.name}")
 
-    url = "https://uat-leasemanagementsystem.bilakhiagroup.com/api/method/leasemanagement.api.invoice_details.insert_invoice_batch_data"
+    url = "https://uat-lease_appsystem.bilakhiagroup.com/api/method/lease_app.api.invoice_details.insert_invoice_batch_data"
 
     api_key = "2a10a46990ed2a6"
     api_secret = "191802208eba798"

@@ -34,8 +34,8 @@ def execute():
 
     if apps and "alms_app" not in apps:
         print("Adding alms_app to apps.txt dynamically...")
-        if "leasemanagement" in apps:
-            idx = apps.index("leasemanagement")
+        if "lease_app" in apps:
+            idx = apps.index("lease_app")
             apps.insert(idx, "alms_app")
         elif "leasemanagement" in apps:
             idx = apps.index("leasemanagement")

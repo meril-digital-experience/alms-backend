@@ -19,7 +19,7 @@ def execute():
 
     importlib.invalidate_caches()
 
-    needed_apps = ["frappe", "leasemanagement", "alms_app"]
+    needed_apps = ["frappe", "lease_app", "alms_app"]
 
     # 1. Mutate thread-local in-memory installed_apps list so bench migrate & Desk know all 5 apps are installed
     if hasattr(frappe, "local"):
@@ -33,7 +33,7 @@ def execute():
         apps = []
 
     updated_apps = False
-    for app_name in ["leasemanagement", "alms_app"]:
+    for app_name in ["lease_app", "alms_app"]:
         if app_name not in apps:
             apps.append(app_name)
             updated_apps = True

@@ -7,7 +7,7 @@ import json
 from frappe.utils import cstr
 from frappe.model.document import Document
 from frappe.core.doctype.user.user import User
-from leasemanagement.utils.custom_send_mail import custom_sendmail
+from lease_app.utils.custom_send_mail import custom_sendmail
 from frappe.utils.password import update_password
 from frappe.email.doctype.email_template.email_template import get_email_template
 
