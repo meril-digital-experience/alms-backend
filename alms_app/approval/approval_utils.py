@@ -1,6 +1,6 @@
 import frappe
 from frappe import _
-from lease_app.approval.approval_router import get_role_based_approver
+from leasemanagement.approval.approval_router import get_role_based_approver
 
 
 def _norm_approval_stage(val):

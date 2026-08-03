@@ -2,11 +2,11 @@ from . import __version__ as app_version
 import sys
 import os
 
-# Dynamically add the parent directory of lease_app to sys.path so that alms_app is importable
+# Dynamically add the parent directory of leasemanagement to sys.path so that alms_app is importable
 apps_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-lease_app_dir = os.path.join(apps_dir, 'lease_app')
-if lease_app_dir not in sys.path:
-    sys.path.insert(0, lease_app_dir)
+leasemanagement_dir = os.path.join(apps_dir, 'leasemanagement')
+if leasemanagement_dir not in sys.path:
+    sys.path.insert(0, leasemanagement_dir)
 
 app_name = "alms_app"
 app_title = "Car Leasing App"
@@ -23,11 +23,11 @@ app_license = "mit"
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
-# 		"name": "lease_app",
-# 		"logo": "/assets/lease_app/logo.png",
+# 		"name": "leasemanagement",
+# 		"logo": "/assets/leasemanagement/logo.png",
 # 		"title": "Car and Lease",
-# 		"route": "/lease_app",
-# 		"has_permission": "lease_app.api.permission.has_app_permission"
+# 		"route": "/leasemanagement",
+# 		"has_permission": "leasemanagement.api.permission.has_app_permission"
 # 	}
 # ]
 
@@ -35,15 +35,15 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/lease_app/css/lease_app.css"
-# app_include_js = "/assets/lease_app/js/lease_app.js"
+# app_include_css = "/assets/leasemanagement/css/leasemanagement.css"
+# app_include_js = "/assets/leasemanagement/js/leasemanagement.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/lease_app/css/lease_app.css"
-# web_include_js = "/assets/lease_app/js/lease_app.js"
+# web_include_css = "/assets/leasemanagement/css/leasemanagement.css"
+# web_include_js = "/assets/leasemanagement/js/leasemanagement.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "lease_app/public/scss/website"
+# website_theme_scss = "leasemanagement/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -61,7 +61,7 @@ app_license = "mit"
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "lease_app/public/icons.svg"
+# app_include_icons = "leasemanagement/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -85,43 +85,43 @@ app_license = "mit"
 
 # add methods and filters to jinja environment
 # jinja = {
-# 	"methods": "lease_app.utils.jinja_methods",
-# 	"filters": "lease_app.utils.jinja_filters"
+# 	"methods": "leasemanagement.utils.jinja_methods",
+# 	"filters": "leasemanagement.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
 
-# before_install = "lease_app.install.before_install"
-# after_install = "lease_app.install.after_install"
+# before_install = "leasemanagement.install.before_install"
+# after_install = "leasemanagement.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "lease_app.uninstall.before_uninstall"
-# after_uninstall = "lease_app.uninstall.after_uninstall"
+# before_uninstall = "leasemanagement.uninstall.before_uninstall"
+# after_uninstall = "leasemanagement.uninstall.after_uninstall"
 
 # Integration Setup
 # ------------------
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
-# before_app_install = "lease_app.utils.before_app_install"
-# after_app_install = "lease_app.utils.after_app_install"
+# before_app_install = "leasemanagement.utils.before_app_install"
+# after_app_install = "leasemanagement.utils.after_app_install"
 
 # Integration Cleanup
 # -------------------
 # To clean up dependencies/integrations with other apps
 # Name of the app being uninstalled is passed as an argument
 
-# before_app_uninstall = "lease_app.utils.before_app_uninstall"
-# after_app_uninstall = "lease_app.utils.after_app_uninstall"
+# before_app_uninstall = "leasemanagement.utils.before_app_uninstall"
+# after_app_uninstall = "leasemanagement.utils.after_app_uninstall"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "lease_app.notifications.get_notification_config"
+# notification_config = "leasemanagement.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -160,39 +160,39 @@ app_license = "mit"
 
 # scheduler_events = {
 # 	"all": [
-# 		"lease_app.tasks.all"
+# 		"leasemanagement.tasks.all"
 # 	],
 # 	"daily": [
-# 		"lease_app.tasks.daily"
+# 		"leasemanagement.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"lease_app.tasks.hourly"
+# 		"leasemanagement.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"lease_app.tasks.weekly"
+# 		"leasemanagement.tasks.weekly"
 # 	],
 # 	"monthly": [
-# 		"lease_app.tasks.monthly"
+# 		"leasemanagement.tasks.monthly"
 # 	],
 # }
 
 # Testing
 # -------
 
-# before_tests = "lease_app.install.before_tests"
+# before_tests = "leasemanagement.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "lease_app.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "leasemanagement.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "lease_app.task.get_dashboard_data"
+# 	"Task": "leasemanagement.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -206,13 +206,13 @@ app_license = "mit"
 
 # Request Events
 # ----------------
-# before_request = ["lease_app.utils.before_request"]
-# after_request = ["lease_app.utils.after_request"]
+# before_request = ["leasemanagement.utils.before_request"]
+# after_request = ["leasemanagement.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["lease_app.utils.before_job"]
-# after_job = ["lease_app.utils.after_job"]
+# before_job = ["leasemanagement.utils.before_job"]
+# after_job = ["leasemanagement.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -242,7 +242,7 @@ app_license = "mit"
 # --------------------------------
 
 # auth_hooks = [
-# 	"lease_app.auth.validate"
+# 	"leasemanagement.auth.validate"
 # ]
 
 # Automatically update python controller files with type annotations for this app.
@@ -258,20 +258,20 @@ app_license = "mit"
 # ignore_translatable_strings_from = []
 
 
-# Merged from lease_app and lease_app
+# Merged from leasemanagement and leasemanagement
 
 fixtures = [
     {"dt": "Role", "filters": {"name": ["in", ["Car Indent Form User", "ALMS User"]]}},
 ]
 
 app_include_css = [
-    "/assets/lease_app/css/custom.css"
+    "/assets/leasemanagement/css/custom.css"
 ]
 
 app_include_js = [
-    "/assets/lease_app/js/alms_listview_handler.js",
-    "/assets/lease_app/js/approval_ui_v7.js",
-    "/assets/lease_app/js/invoice_dialog.js"
+    "/assets/leasemanagement/js/alms_listview_handler.js",
+    "/assets/leasemanagement/js/approval_ui_v7.js",
+    "/assets/leasemanagement/js/invoice_dialog.js"
 ]
 
 doc_events = {

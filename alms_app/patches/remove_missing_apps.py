@@ -6,7 +6,7 @@ def execute():
     
     # Fix Module Def app_names so Frappe doesn't orphan their DocTypes
     frappe.db.sql("UPDATE `tabModule Def` SET app_name = 'alms_app' WHERE module_name IN ('ALMS', 'master', 'CRMS', 'Approval')")
-    frappe.db.sql("UPDATE `tabModule Def` SET app_name = 'lease_app' WHERE module_name IN ('Lease Management System', 'Lease Masters')")
+    frappe.db.sql("UPDATE `tabModule Def` SET app_name = 'leasemanagement' WHERE module_name IN ('Lease Management System', 'Lease Masters')")
 
     # Remove from default value
     val = frappe.db.get_value('DefaultValue', {'defkey': 'installed_apps'}, 'defvalue')

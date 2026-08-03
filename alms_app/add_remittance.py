@@ -36,8 +36,8 @@ def execute():
 
     if apps and "remittance_tool" not in apps:
         print("Adding remittance_tool to apps.txt dynamically...")
-        if "lease_app" in apps:
-            idx = apps.index("lease_app")
+        if "leasemanagement" in apps:
+            idx = apps.index("leasemanagement")
             apps.insert(idx, "remittance_tool")
         elif "leasemanagement" in apps:
             idx = apps.index("leasemanagement")
