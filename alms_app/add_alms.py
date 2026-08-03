@@ -13,15 +13,13 @@ def execute():
     monorepo_dir = os.path.dirname(pkg_dir)
     alms_dir = os.path.join(monorepo_dir, "alms_app")
     approval_dir = os.path.join(monorepo_dir, "alms_app")
-    remittance_dir = os.path.join(monorepo_dir, "remittance")
-
-    for p in [alms_dir, approval_dir, remittance_dir, monorepo_dir, apps_dir]:
+    for p in [alms_dir, approval_dir, monorepo_dir, apps_dir]:
         if os.path.exists(p) and p not in sys.path:
             sys.path.insert(0, p)
 
     importlib.invalidate_caches()
 
-    needed_apps = ["frappe", "lease_app", "alms_app", "remittance_tool", "alms_app"]
+    needed_apps = ["frappe", "lease_app", "alms_app"]
 
     # 1. Mutate thread-local in-memory installed_apps list so bench migrate & Desk know all 5 apps are installed
     if hasattr(frappe, "local"):
@@ -35,7 +33,7 @@ def execute():
         apps = []
 
     updated_apps = False
-    for app_name in ["lease_app", "alms_app", "remittance_tool", "alms_app"]:
+    for app_name in ["lease_app", "alms_app"]:
         if app_name not in apps:
             apps.append(app_name)
             updated_apps = True
@@ -58,7 +56,7 @@ def execute():
 
     # 5. Bind all monorepo modules in tabModule Def to alms_app so Frappe never throws Module Not Found
     try:
-        frappe.db.sql("UPDATE `tabModule Def` SET app_name = 'alms_app' WHERE module_name IN ('Lease Management System', 'Car and Lease', 'Lease Masters', 'ALMS', 'master', 'CRMS', 'Approval', 'Remittance Tool')")
+        frappe.db.sql("UPDATE `tabModule Def` SET app_name = 'alms_app' WHERE module_name IN ('Lease Management System', 'Car and Lease', 'Lease Masters', 'ALMS', 'master', 'CRMS', 'Approval')")
         frappe.db.commit()
     except Exception as e:
         print(f"Warning updating Module Def app_names: {e}")
