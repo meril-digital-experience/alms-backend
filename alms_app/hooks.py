@@ -334,6 +334,6 @@ has_permission = {
     "Employee": "alms_app.master.doctype.employee.employee.has_permission",
 }
 
-before_migrate = [
-    "alms_app.add_alms.execute",
-]
+# before_migrate = [
+#     "alms_app.add_alms.execute",
+# ]
