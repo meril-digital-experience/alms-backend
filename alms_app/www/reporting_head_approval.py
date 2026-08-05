@@ -53,7 +53,7 @@ def get_car_indent_data(indent_form_id, token=None):
             }
         
         # Check approval status using Approval Engine
-        from alms_app.approval.approval_router import get_approval_status, can_approve
+        from mds_master.mds_approval.approval_router import get_approval_status, can_approve
         
         entry_name = getattr(form_data, 'approval_entry', None)
         if entry_name:

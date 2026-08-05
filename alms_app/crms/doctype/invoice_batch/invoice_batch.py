@@ -45,7 +45,7 @@ class InvoiceBatch(Document):
     def on_update(self):
         if self.excel_sheet_status in ["Completed", "Partially Completed"] and not self.get("approval_initiated"):
             try:
-                from alms_app.approval.approval_router import trigger_approval_if_matrix_exists
+                from mds_master.mds_approval.approval_router import trigger_approval_if_matrix_exists
                 trigger_approval_if_matrix_exists(self)
             except Exception as e:
                 frappe.log_error(str(e), "trigger_approval_if_matrix_exists fallback")

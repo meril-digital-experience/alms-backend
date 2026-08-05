@@ -276,14 +276,14 @@ app_include_js = [
 
 doc_events = {
     "*": {
-        "validate": "alms_app.approval.approval_router.auto_restart_rejected_document",
-        "on_update": "alms_app.approval.approval_router.trigger_approval_if_matrix_exists",
-        "on_submit": "alms_app.approval.approval_router.trigger_approval_if_matrix_exists"
+        "validate": "mds_master.mds_approval.approval_router.auto_restart_rejected_document",
+        "on_update": "mds_master.mds_approval.approval_router.trigger_approval_if_matrix_exists",
+        "on_submit": "mds_master.mds_approval.approval_router.trigger_approval_if_matrix_exists"
     },
     "Invoice Batch": {
         "on_update": [
             "alms_app.crms.doctype.invoice_batch.invoice_batch.create_invoice_details_on_approval",
-            "alms_app.approval.approval_router.trigger_approval_if_matrix_exists"
+            "mds_master.mds_approval.approval_router.trigger_approval_if_matrix_exists"
         ]
     },
     "Invoice Details": {
@@ -300,13 +300,13 @@ scheduler_events = {
 }
 
 permission_query_conditions = {
-    "Employee": "alms_app.master.doctype.employee.employee.get_permission_query_conditions",
+    "Employee": "mds_master.mds_master.doctype.employee.employee.get_permission_query_conditions",
 }
 
 has_permission = {
-    "Employee": "alms_app.master.doctype.employee.employee.has_permission",
+    "Employee": "mds_master.mds_master.doctype.employee.employee.has_permission",
 }
 
-before_migrate = [
-    "alms_app.add_alms.execute",
-]
+# before_migrate = [
+#     "alms_app.add_alms.execute",
+# ]

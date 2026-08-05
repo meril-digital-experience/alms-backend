@@ -8,7 +8,7 @@ Email = EmailServices()
 @frappe.whitelist(allow_guest=True)
 def process_car_indent_by_reporting(indent_form, remarks, token, action):
     try:
-        from alms_app.approval.approval_router import process_approval_action
+        from mds_master.mds_approval.approval_router import process_approval_action
         
         if action not in ["approve", "reject", "revoke_reject"]:
             return fail("Invalid action")
@@ -34,7 +34,7 @@ def process_car_indent_by_reporting(indent_form, remarks, token, action):
         
         try:
             if action == "revoke_reject":
-                from alms_app.approval.approval_router import revoke_and_reject_approval
+                from mds_master.mds_approval.approval_router import revoke_and_reject_approval
                 result = revoke_and_reject_approval("Car Indent Form", indent_form, remarks, specific_user=reporting_head_email)
                 mapped_action = "Rejected"
             else:
