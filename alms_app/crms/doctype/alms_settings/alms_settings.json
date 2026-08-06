@@ -1,0 +1,78 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-04-16 10:19:14.381156",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "smtp_server",
+  "smtp_port",
+  "smtp_user",
+  "smtp_password",
+  "column_break_iqhs",
+  "from_address",
+  "bcc_address"
+ ],
+ "fields": [
+  {
+   "fieldname": "smtp_server",
+   "fieldtype": "Data",
+   "label": "SMTP SERVER"
+  },
+  {
+   "fieldname": "smtp_port",
+   "fieldtype": "Data",
+   "label": "SMTP PORT"
+  },
+  {
+   "fieldname": "smtp_user",
+   "fieldtype": "Data",
+   "label": "SMTP USER"
+  },
+  {
+   "fieldname": "smtp_password",
+   "fieldtype": "Data",
+   "label": "SMTP PASSWORD"
+  },
+  {
+   "fieldname": "column_break_iqhs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "from_address",
+   "fieldtype": "Data",
+   "label": "From Address"
+  },
+  {
+   "fieldname": "bcc_address",
+   "fieldtype": "Table",
+   "label": "Bcc Address",
+   "options": "BCC Recipients"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-08-06 10:22:01.379210",
+ "modified_by": "Administrator",
+ "module": "CRMS",
+ "name": "ALMS Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,245 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-10 17:25:27.547101",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "invoice_details_section",
+  "order_number",
+  "vendor_name",
+  "invoice_number",
+  "invoice_date",
+  "quantity",
+  "delivery_address",
+  "column_break_akdd",
+  "upload_invoice",
+  "basic_amount",
+  "gst",
+  "total_bill_amount_inc_gst",
+  "total_sch_amount",
+  "rent_amount_details_section",
+  "rental_amountexcl_gst",
+  "rental_tax_rate",
+  "rental_tax_amount",
+  "total_rental",
+  "column_break_tdgw",
+  "security_deposit",
+  "quarterly_rent",
+  "rent_start_date",
+  "interim_gst",
+  "total_interim_amount",
+  "qtr_details_section",
+  "per_quarter",
+  "per_quarter_rate",
+  "quarter_gst",
+  "total_quarters",
+  "column_break_gbaj",
+  "tenure_years",
+  "total_payable_value",
+  "total_amount",
+  "asset_details_section",
+  "asset_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "invoice_details_section",
+   "fieldtype": "Section Break",
+   "label": "Invoice Details"
+  },
+  {
+   "fieldname": "order_number",
+   "fieldtype": "Data",
+   "label": "Order Number"
+  },
+  {
+   "fieldname": "vendor_name",
+   "fieldtype": "Data",
+   "label": "Vendor Name"
+  },
+  {
+   "fieldname": "invoice_number",
+   "fieldtype": "Data",
+   "label": "Invoice Number"
+  },
+  {
+   "fieldname": "invoice_date",
+   "fieldtype": "Date",
+   "label": "Invoice Date"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "delivery_address",
+   "fieldtype": "Data",
+   "label": "Delivery Address"
+  },
+  {
+   "fieldname": "column_break_akdd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "upload_invoice",
+   "fieldtype": "Attach",
+   "label": "Upload Invoice"
+  },
+  {
+   "fieldname": "basic_amount",
+   "fieldtype": "Int",
+   "label": "Basic Amount"
+  },
+  {
+   "fieldname": "gst",
+   "fieldtype": "Data",
+   "label": "GST"
+  },
+  {
+   "fieldname": "total_bill_amount_inc_gst",
+   "fieldtype": "Int",
+   "label": "Total Bill Amount (Inc. GST)"
+  },
+  {
+   "fieldname": "total_sch_amount",
+   "fieldtype": "Int",
+   "label": "Total SCH Amount"
+  },
+  {
+   "fieldname": "rent_amount_details_section",
+   "fieldtype": "Section Break",
+   "label": "Rent Amount Details"
+  },
+  {
+   "fieldname": "rental_amountexcl_gst",
+   "fieldtype": "Int",
+   "label": "Rental Amount(Excl. GST)"
+  },
+  {
+   "fieldname": "rental_tax_rate",
+   "fieldtype": "Data",
+   "label": "Tax Rate"
+  },
+  {
+   "fieldname": "rental_tax_amount",
+   "fieldtype": "Data",
+   "label": "Tax Amount"
+  },
+  {
+   "fieldname": "total_rental",
+   "fieldtype": "Data",
+   "label": "Total Rental"
+  },
+  {
+   "fieldname": "column_break_tdgw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "security_deposit",
+   "fieldtype": "Data",
+   "label": "Security Deposit"
+  },
+  {
+   "fieldname": "quarterly_rent",
+   "fieldtype": "Data",
+   "label": "Quarterly Rent"
+  },
+  {
+   "fieldname": "rent_start_date",
+   "fieldtype": "Date",
+   "label": "Rent Start Date"
+  },
+  {
+   "fieldname": "interim_gst",
+   "fieldtype": "Data",
+   "label": "Interim GST"
+  },
+  {
+   "fieldname": "total_interim_amount",
+   "fieldtype": "Data",
+   "label": "Total Interim Amount"
+  },
+  {
+   "fieldname": "qtr_details_section",
+   "fieldtype": "Section Break",
+   "label": "QTR Details"
+  },
+  {
+   "fieldname": "per_quarter",
+   "fieldtype": "Data",
+   "label": "Per Quarter/PTPQ"
+  },
+  {
+   "fieldname": "per_quarter_rate",
+   "fieldtype": "Data",
+   "label": "Per Quarter Rate"
+  },
+  {
+   "fieldname": "quarter_gst",
+   "fieldtype": "Data",
+   "label": "Quarter GST"
+  },
+  {
+   "fieldname": "total_quarters",
+   "fieldtype": "Data",
+   "label": "Total Quarters"
+  },
+  {
+   "fieldname": "column_break_gbaj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tenure_years",
+   "fieldtype": "Select",
+   "label": "Tenure Years",
+   "options": "1 Year\n2 Years\n3 Years\n4 Years\n5 Years"
+  },
+  {
+   "fieldname": "total_payable_value",
+   "fieldtype": "Data",
+   "label": "Total Payable Value"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Data",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "asset_details_section",
+   "fieldtype": "Section Break",
+   "label": "Asset Details"
+  },
+  {
+   "fieldname": "asset_table",
+   "fieldtype": "Table",
+   "label": "Assets",
+   "options": "Assets Details"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-06 10:22:15.142636",
+ "modified_by": "Administrator",
+ "module": "CRMS",
+ "name": "Asset Invoice",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

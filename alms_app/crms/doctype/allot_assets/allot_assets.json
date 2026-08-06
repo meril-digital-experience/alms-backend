@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-11 14:55:10.830225",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "allot_assets_section",
+  "asset_code",
+  "basic_value",
+  "employee_name",
+  "allotted_date",
+  "column_break_esva",
+  "asset_name",
+  "cost_center",
+  "employee_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "allot_assets_section",
+   "fieldtype": "Section Break",
+   "label": "Allot Assets Details"
+  },
+  {
+   "fieldname": "asset_code",
+   "fieldtype": "Data",
+   "label": "Asset Code"
+  },
+  {
+   "fieldname": "basic_value",
+   "fieldtype": "Data",
+   "label": "Basic Value"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Link",
+   "label": "Employee Name",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "allotted_date",
+   "fieldtype": "Date",
+   "label": "Allotted Date"
+  },
+  {
+   "fieldname": "column_break_esva",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "asset_name",
+   "fieldtype": "Data",
+   "label": "Asset Name"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Data",
+   "label": "Cost Center"
+  },
+  {
+   "fieldname": "employee_code",
+   "fieldtype": "Data",
+   "label": "Employee Code"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-06 10:21:54.580265",
+ "modified_by": "Administrator",
+ "module": "CRMS",
+ "name": "Allot Assets",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
