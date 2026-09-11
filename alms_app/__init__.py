@@ -9,12 +9,12 @@ import types
 # The patch `remove_missing_apps` will then permanently clean them from the database.
 class DummyMissingAppImporter:
     def find_module(self, fullname, path=None):
-        if fullname.startswith("approval_app") or fullname.startswith("remittance_app") or fullname.startswith("mds_master"):
+        if fullname.startswith("approval_app") or fullname.startswith("remittance_app"):
             return self
         return None
         
     def find_spec(self, fullname, path, target=None):
-        if fullname.startswith("approval_app") or fullname.startswith("remittance_app") or fullname.startswith("mds_master"):
+        if fullname.startswith("approval_app") or fullname.startswith("remittance_app"):
             import importlib.machinery
             return importlib.machinery.ModuleSpec(fullname, self)
         return None
@@ -46,7 +46,7 @@ _original_get_attr = frappe.get_attr
 def patched_get_attr(method_string):
     try:
         app_name = method_string.split(".", 1)[0]
-        if app_name in ("approval_app", "remittance_app", "mds_master"):
+        if app_name in ("approval_app", "remittance_app"):
             return lambda *args, **kwargs: None
         if method_string.startswith("leasemanagement.master."):
             method_string = method_string.replace("leasemanagement.master.", "alms_app.master.", 1)
