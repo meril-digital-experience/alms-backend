@@ -4,10 +4,47 @@ frappe.ready(function () {
 
     function getEmployeeCodeFromURL() {
         const params = new URLSearchParams(window.location.search);
-        return decodeURIComponent(params.get("employee_code") || "");
+        let code = decodeURIComponent(params.get("employee_code") || "");
+        if (code) {
+            localStorage.setItem("alms_current_employee_code", code);
+        } else {
+            code = localStorage.getItem("alms_current_employee_code") || "";
+        }
+        return code;
     }
     const employeeCode = getEmployeeCodeFromURL();
     console.log('Employee Code from URL:', employeeCode);
+    
+    // Automatically set form_type to Car and hide it so user doesn't have to select again
+    frappe.web_form.set_value('form_type', 'Car');
+    frappe.web_form.set_df_property('form_type', 'hidden', 1);
+
+    let data_restored = false;
+
+    function restore_user_data() {
+        if (data_restored) return;
+        const savedData = localStorage.getItem('car_indent_form_data');
+        if (savedData) {
+            try {
+                const parsedData = JSON.parse(savedData);
+                setTimeout(() => {
+                    for (let key in parsedData) {
+                        // Don't overwrite the auto-populated read-only fields
+                        if (!['designation', 'location', 'company_name', 'employee_reporting', 'contact_number', 'email_id', 'department', 'employee_name', 'employee_code', 'form_type'].includes(key)) {
+                            if (parsedData[key] !== null && parsedData[key] !== undefined && parsedData[key] !== '') {
+                                frappe.web_form.set_value(key, parsedData[key]);
+                            }
+                        }
+                    }
+                    // Recalculate totals after restoring
+                    calculate_totals();
+                }, 500); // 500ms delay to ensure all field DOMs (like Links) are fully initialized
+            } catch (e) {
+                console.error('Error restoring form data', e);
+            }
+        }
+        data_restored = true;
+    }
     if (employeeCode) {
         frappe.web_form.set_value('employee_code', employeeCode);
         console.log('Employee Code:', employeeCode);
@@ -27,10 +64,11 @@ frappe.ready(function () {
                     frappe.web_form.set_value('ex_showroom_price', employeeDetails[0].eligibility);
                     frappe.web_form.set_value('location', employeeDetails[0].location);
                     frappe.web_form.set_value('company_name', employeeDetails[0].company);
-                    frappe.web_form.set_value('employee_reporting', employeeDetails[0].reporting_head);
+                    frappe.web_form.set_value('employee_reporting', employeeDetails[0].reporting_head_name || employeeDetails[0].reporting_head);
                     frappe.web_form.set_value('contact_number', employeeDetails[0].contact_number);
                     frappe.web_form.set_value('email_id', employeeDetails[0].email_id);
                     frappe.web_form.set_value('department', employeeDetails[0].department);
+                    frappe.web_form.set_value('employee_name', employeeDetails[0].full_name);
 
                     frappe.web_form.set_df_property('designation', 'read_only', true);
                     frappe.web_form.set_df_property('ex_showroom_price', true);
@@ -41,13 +79,19 @@ frappe.ready(function () {
                     frappe.web_form.set_df_property('contact_number', 'read_only', true);
                     frappe.web_form.set_df_property('email_id', 'read_only', true);
                     frappe.web_form.set_df_property('department', 'read_only', true);
+                    frappe.web_form.set_df_property('employee_name', 'read_only', true);
                     frappe.web_form.set_df_property('form_type', 'read_only', true);
+
+                    restore_user_data();
                 }
             },
             error: function (error) {
                 console.log('Error fetching employee details:', error);
+                restore_user_data();
             }
         });
+    } else {
+        restore_user_data();
     }
 
     frappe.web_form.on("ex_showroom_price", calculate_totals);
@@ -83,6 +127,16 @@ frappe.ready(function () {
     }
 
     calculate_totals();
+
+    // Save data to localStorage periodically
+    setInterval(() => {
+        if (frappe && frappe.web_form && data_restored) {
+            const currentData = frappe.web_form.get_values();
+            if (currentData) {
+                localStorage.setItem('car_indent_form_data', JSON.stringify(currentData));
+            }
+        }
+    }, 1000);
 
     frappe.web_form.validate = function () {
         const formType = frappe.web_form.get_value("form_type");
@@ -124,6 +178,8 @@ frappe.ready(function () {
                             reject("Already exists");
                         } else {
                             // ✅ Just allow save
+                            localStorage.removeItem('car_indent_form_data');
+                            localStorage.removeItem('alms_current_employee_code');
                             resolve();
                         }
                     },

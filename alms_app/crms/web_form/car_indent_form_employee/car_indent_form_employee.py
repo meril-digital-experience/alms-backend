@@ -32,6 +32,13 @@ def get_employee_details(employee_code):
     emp["contact_number"] = emp.get("cell_number")
     emp["email_id"] = emp.get("company_email") or emp.get("user_id")
     
+    reporting_head = emp.get("reporting_head")
+    if reporting_head:
+        rh_name = frappe.db.get_value("Employee", reporting_head, "full_name")
+        emp["reporting_head_name"] = rh_name if rh_name else reporting_head
+    else:
+        emp["reporting_head_name"] = ""
+        
     return [emp]
         
 @frappe.whitelist(allow_guest=True)
@@ -81,6 +88,10 @@ def check_indent_exists(employee_code):
 def send_allowance_email(employee_code):
     try:
         employee = frappe.get_doc("Employee", employee_code)
+        
+        if not employee.reporting_head:
+            frappe.throw("Reporting Manager must be assigned to process this request. Please update the employee profile.")
+            
         email_to = employee.email_id
         cc_employee = frappe.get_doc("Employee", employee.reporting_head)
         email_cc = cc_employee.email_id
