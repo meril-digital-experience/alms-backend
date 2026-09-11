@@ -36,8 +36,36 @@ class DummyMissingAppImporter:
         sys.modules[fullname] = mod
         return mod
 
+class LeaseManagementRedirectImporter:
+    def find_module(self, fullname, path=None):
+        if fullname == "leasemanagement" or fullname.startswith("leasemanagement."):
+            return self
+        return None
+        
+    def find_spec(self, fullname, path, target=None):
+        if fullname == "leasemanagement" or fullname.startswith("leasemanagement."):
+            import importlib.machinery
+            return importlib.machinery.ModuleSpec(fullname, self)
+        return None
+        
+    def load_module(self, fullname):
+        import importlib
+        if fullname in sys.modules:
+            return sys.modules[fullname]
+            
+        real_name = fullname.replace("leasemanagement", "alms_app", 1)
+        try:
+            mod = importlib.import_module(real_name)
+            sys.modules[fullname] = mod
+            return mod
+        except ImportError as e:
+            raise ImportError(f"Failed to redirect {fullname} to {real_name}: {e}")
+
 if not any(isinstance(i, DummyMissingAppImporter) for i in sys.meta_path):
     sys.meta_path.insert(0, DummyMissingAppImporter())
+
+if not any(isinstance(i, LeaseManagementRedirectImporter) for i in sys.meta_path):
+    sys.meta_path.insert(0, LeaseManagementRedirectImporter())
 # --------------------------------------
 
 import frappe
