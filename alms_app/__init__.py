@@ -58,7 +58,14 @@ def patched_get_attr(method_string):
             method_string = method_string.replace("leasemanagement.approval.", "alms_app.approval.", 1)
     except Exception:
         pass
-    return _original_get_attr(method_string)
+
+    try:
+        return _original_get_attr(method_string)
+    except frappe.exceptions.AppNotInstalledError as e:
+        app_name = method_string.split(".", 1)[0]
+        if app_name in ("approval_app", "remittance_app", "mds_master"):
+            return lambda *args, **kwargs: None
+        raise e
 
 frappe.get_attr = patched_get_attr
 
